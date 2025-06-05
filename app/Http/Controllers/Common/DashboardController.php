@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Common;
 
 use App\Model\Admin\Contact;
 use App\Model\Admin\Project;
+use App\Model\Admin\Room;
 use App\Model\Admin\Service;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -44,6 +45,7 @@ class DashboardController extends Controller
         $data['services'] = Service::query()->get()->count();
         $data['blogs'] = Post::query()->get()->count();
         $data['contacts'] = Contact::query()->get()->count();
+        $data['rooms'] = Room::query()->get()->count();
 
         $visitsByWeek = DB::table('visits')
             ->selectRaw("YEARWEEK(visited_at, 1) as yw, COUNT(*) as visits")

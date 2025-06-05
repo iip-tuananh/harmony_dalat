@@ -73,13 +73,13 @@ Admin Panel - {{ $config->web_title }}
     <div class="col-lg-3 col-md-6 mb-4">
         <div class="small-box bg-primary">
             <div class="inner text-center">
-                <h3 class="text-orange">{{ $data['projects'] ?? 0 }}</h3>
-                <p>Dự án</p>
+                <h3 class="text-orange">{{ $data['rooms'] ?? 0 }}</h3>
+                <p>Hạng phòng</p>
             </div>
             <div class="icon">
                 <i class="fas fa-project-diagram"></i>
             </div>
-            <a href="{{ route('projects.index') }}" class="small-box-footer">
+            <a href="{{ route('Room.index') }}" class="small-box-footer">
                 Xem chi tiết <i class="fas fa-arrow-circle-right"></i>
             </a>
         </div>
