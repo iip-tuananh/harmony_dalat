@@ -8,7 +8,6 @@
 </head>
 
 <body ng-app="App" class="theme-style--light" ng-cloak>
-
     <!-- Preloader End-->
     <div id="preloader">
         <div class="preloader-inner">

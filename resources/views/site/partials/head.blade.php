@@ -198,3 +198,20 @@
             }
         }
     </style>
+
+
+    <style>
+        /* 1. Bao phủ toàn màn hình, luôn nằm trên cùng */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* đảm bảo nằm trên cùng mọi thứ */
+        }
+    </style>
