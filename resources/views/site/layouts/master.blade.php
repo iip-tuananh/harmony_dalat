@@ -5,6 +5,88 @@
 <head>
     @include('site.partials.head')
     @yield('css')
+
+    <style>
+        @media (min-width: 1550px) and (max-width: 1800px) {
+            .header_center_part .main-menu > li > a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.95rem !important;
+            }
+
+            .header .mainnav ul.main-menu > li.current > a::before, .header .mainnav ul.main-menu > li.active > a::before, .header .mainnav ul.main-menu > li > a::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 8px !important;
+                width: 0%;
+                height: 1px;
+                background-color: rgba(var(--color-white-rgb), 0.8);
+                transition: var(--transition-base);
+            }
+
+            .header .mainnav ul.main-menu > li + li {
+                margin-left: 10px !important;
+            }
+        }
+
+        @media (max-width: 1550px) {
+            .header_center_part .main-menu > li > a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.7rem !important;
+            }
+
+            .header .mainnav ul.main-menu > li.current > a::before, .header .mainnav ul.main-menu > li.active > a::before, .header .mainnav ul.main-menu > li > a::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 8px !important;
+                width: 0%;
+                height: 1px;
+                background-color: rgba(var(--color-white-rgb), 0.8);
+                transition: var(--transition-base);
+            }
+
+            .header .mainnav ul.main-menu > li + li {
+                margin-left: 10px !important;
+            }
+
+            .header .mainnav ul.main-menu li a {
+                border: 0;
+                list-style: none;
+                display: inline-block;
+                position: relative;
+                font-size: 11px !important;
+                font-weight: var(--fw-normal);
+                line-height: 24px;
+                text-decoration: none;
+                text-transform: uppercase;
+                text-align: center;
+                color: rgba(var(--color-white-rgb), 0.7);
+                letter-spacing: 1px;
+                padding: 25px 0px;
+                transition: var(--transition-base);
+            }
+
+            .header .mainnav ul.main-menu li ul {
+                position: absolute;
+                left: 0;
+                opacity: 0;
+                visibility: hidden;
+                min-width: 200px !important;
+                margin: 0px 0px;
+                padding: 15px 25px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                z-index: 5;
+                transition: var(--transition-base);
+                transform: translate3d(15px, 0px, 0px);
+                background: var(--color-black);
+                box-shadow: 0px 0px 40px 0px rgba(39, 61, 113, 0.1);
+                max-height: calc(100vh - 100px);
+            }
+        }
+    </style>
 </head>
 
 <body ng-app="App" class="theme-style--light" ng-cloak>
