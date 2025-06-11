@@ -1,11 +1,13 @@
 @extends('site.layouts.master')
+
 @section('title')
-    {{ $config->web_title }}
+   {{ $room->name }} - Phòng và Phòng Suite - {{ $config->web_title }}
 @endsection
 @section('description')
-    {{ $config->web_des }}
+    {{ strip_tags(html_entity_decode($config->introduction)) }}
 @endsection
 @section('image')
+    {{ @$room->image_back->path ?? ''}}
 @endsection
 
 @section('css')

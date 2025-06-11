@@ -1,12 +1,13 @@
 @extends('site.layouts.master')
+
 @section('title')
     {{ $config->web_title }}
 @endsection
 @section('description')
-    {{ $config->web_des }}
+    {{ strip_tags(html_entity_decode($config->introduction)) }}
 @endsection
 @section('image')
-    {{ url('' . $banners[0]->image->path ?? '') }}
+    {{@$config->image->path ?? ''}}
 @endsection
 
 @section('css')

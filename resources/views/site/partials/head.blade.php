@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <meta name='revisit-after' content='2 days' />
     <meta name="viewport" content="width=device-width">
-    <title>{{ $config->web_title }}</title>
+    <title>@yield('title')</title>
     <link rel="manifest" href="">
-    <meta name="description" content="{{ $config->web_title }}" />
+    <meta name="description" content="@yield('description')" />
 
     <link rel="shortcut icon" href="{{@$config->favicon->path ?? ''}}" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="{{@$config->favicon->path ?? ''}}">
@@ -27,18 +27,29 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="index.html" />
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ $config->web_title }}">
-    <meta property="og:description" content="{{ $config->web_title }}">
-    <meta property="og:image" content="{{@$config->image->path ?? ''}}">
-    <meta property="og:site_name" content="{{ $config->web_title }}">
+
+
+{{--    <meta property="og:title" content="{{ $config->web_title }}">--}}
+{{--    <meta property="og:description" content="{{ $config->web_title }}">--}}
+    {{--    <meta property="og:image" content="{{@$config->image->path ?? ''}}">--}}
+{{--    <meta itemprop="description" content="{{ $config->web_title }}">--}}
+{{--    <meta itemprop="image" content="{{@$config->image->path ?? ''}}">--}}
+
+    <meta property="og:title" content="@yield('title')">
+    <meta property="og:description" content="@yield('description')">
+    <meta property="og:image" content="@yield('image')">
+    <meta property="og:site_name" content="{{ url()->current() }}">
     <meta property="og:image:alt" content="{{ $config->web_title }}">
+    <meta itemprop="description" content="@yield('description')">
+    <meta itemprop="image" content="@yield('image')">
+    <meta itemprop="url" content="{{ url()->current() }}">
+
+
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="vi_VN" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="{{ url()->current() }}" />
-    <meta itemprop="description" content="{{ $config->web_title }}">
-    <meta itemprop="image" content="{{@$config->image->path ?? ''}}">
-    <meta itemprop="url" content="">
+
     <!-- <link rel="amphtml" href="amp/" /> -->
     <link rel="image_src" href="{{@$config->image->path ?? ''}}" />
     <link rel="image_src" href="{{@$config->image->path ?? ''}}" />

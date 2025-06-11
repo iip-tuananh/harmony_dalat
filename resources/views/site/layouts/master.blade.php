@@ -87,6 +87,109 @@
             }
         }
     </style>
+
+    <style>
+        @media (min-width: 1200px) {
+            .c-book-expand {
+                right: 18px;
+                top: 150px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .c-book-expand {
+                width: 70px;
+                height: 70px;
+                top: 101px;
+            }
+        }
+
+        .c-book-expand {
+            width: 140px;
+            height: 50px;
+            border: none;
+            background-color: #b37a2d;
+            position: fixed;
+            z-index: 69;
+            top: 91px;
+            right: 15px;
+            display: block;
+            vertical-align: top;
+            cursor: pointer;
+            padding: 0;
+            overflow: hidden;
+            /* -webkit-transform: rotate(45deg); */
+            /* transform: rotate(45deg); */
+        }
+
+        a.c-book-expand:hover {
+            background-color: #b37a2d;
+            -webkit-background-clip: unset;
+        }
+
+        @media (min-width: 992px) {
+            .c-book-expand span {
+                width: 70px;
+                height: 70px;
+                font-size: 14px;
+                padding-top: 16px;
+            }
+        }
+
+        .c-book-expand span {
+            display: block;
+            width: 140px;
+            height: 50px;
+            font-size: 16px;
+            padding-top: 14px;
+            /* padding-right: 17px; */
+            text-transform: uppercase;
+            line-height: normal;
+            text-align: center;
+            /* -webkit-transform: rotate(-45deg); */
+            /* transform: rotate(-45deg); */
+            color: #fff;
+        }
+
+        .c-book-expand span {
+            font-weight: bold;
+        }
+
+        .c-book-expand span:after {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            top: -40px;
+            bottom: -40px;
+            background: #fff;
+            width: 10px;
+            left: -10%;
+            -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+            -webkit-filter: blur(12px);
+            filter: blur(12px);
+            -webkit-animation-name: item-float;
+            animation-name: item-float;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            -webkit-animation-timing-function: linear;
+        }
+
+        @keyframes item-float {
+            0% {
+                left: -20%;
+            }
+
+            100% {
+                left: 120%;
+            }
+        }
+    </style>
 </head>
 
 <body ng-app="App" class="theme-style--light" ng-cloak>
@@ -238,35 +341,9 @@
     <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
 
-    <script>
-        function translateheader(lang) {
-            var sel = document.querySelector("select.goog-te-combo");
-            if (!sel) {
-                // Nếu chưa có, thử lại sau 100ms
-                return setTimeout(function() {
-                    translateheader(lang);
-                }, 100);
-            }
 
-            // 1) Gán giá trị
-            sel.value = lang;
-
-            // 2) Tạo event theo chuẩn cũ (HTMLEvents)
-            var evOld = document.createEvent("HTMLEvents");
-            evOld.initEvent("change", true, true);
-            sel.dispatchEvent(evOld);
-
-            // 3) Tạo event theo chuẩn mới (Event constructor)
-            var evNew = new Event("change", { bubbles: true, cancelable: true });
-            sel.dispatchEvent(evNew);
-        }
-
-    </script>
 
     <script type="text/javascript" src="/site/js/elementa0d8.js?cb=googleTranslateElementInit">
-
-
-
 
 
     </script>
@@ -352,8 +429,58 @@
     <div class="totop">
         <a href="#"><i class="bi bi-chevron-up"></i></a>
     </div>
-{{--    <a href="dat-phong.html" class="c-book-expand" style="display: inline;"><span>Book Now</span>--}}
-{{--    </a>--}}
+
+    <a href="https://book.securebookings.net/roomrate?id=5ae5c750-97ff-1749179505-49ab-bd22-3f26497be8ae&lang=vi" class="c-book-expand" target="_blank"
+       style="display: inline;">
+        <span>Đặt phòng</span>
+    </a>
+
+    <script>
+        function translateheader(lang) {
+            localStorage.setItem('selectedLang', lang);
+
+            var sel = document.querySelector("select.goog-te-combo");
+            if (!sel) {
+                // Nếu chưa có, thử lại sau 100ms
+                return setTimeout(function() {
+                    translateheader(lang);
+                }, 100);
+            }
+
+            // 1) Gán giá trị
+            sel.value = lang;
+
+            // 2) Tạo event theo chuẩn cũ (HTMLEvents)
+            var evOld = document.createEvent("HTMLEvents");
+            evOld.initEvent("change", true, true);
+            sel.dispatchEvent(evOld);
+
+            // 3) Tạo event theo chuẩn mới (Event constructor)
+            var evNew = new Event("change", { bubbles: true, cancelable: true });
+            sel.dispatchEvent(evNew);
+
+            updateBookingLink(lang);
+        }
+
+
+        function updateBookingLink(lang) {
+            var bookBtn = document.querySelector("a.c-book-expand");
+            if (!bookBtn) return;
+
+            var baseUrl = "https://book.securebookings.net/roomrate"
+                + "?id=5ae5c750-97ff-1749179505-49ab-bd22-3f26497be8ae";
+
+            bookBtn.href = (lang === "en")
+                ? baseUrl
+                : baseUrl + "&lang=vi";
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var lang = localStorage.getItem('selectedLang') || "vi";
+            console.log(lang)
+            updateBookingLink(lang);
+        });
+    </script>
 
 
     <!-- Framework -->

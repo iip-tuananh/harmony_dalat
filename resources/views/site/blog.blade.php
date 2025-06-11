@@ -1,11 +1,12 @@
 @extends('site.layouts.master')
 @section('title')
-    {{ $config->web_title }}
+    {{ $categoryBlog->name }} - {{ $config->web_title }}
 @endsection
 @section('description')
-    {{ $config->web_des }}
+    {{ strip_tags(html_entity_decode($config->introduction)) }}
 @endsection
 @section('image')
+    {{ @$categoryBlog->image->path ?? '' }}
 @endsection
 
 @section('css')
