@@ -19,7 +19,7 @@
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow">
     <meta name="revisit-after" content="1 days" />
-    <meta name="generator" content="{{ $config->web_title }}" />
+    <meta name="generator" content="@yield('title')" />
     <meta name="rating" content="General">
     <meta name="application-name" content="{{ $config->web_title }}" />
     <meta name="theme-color" content="#ed3235" />
