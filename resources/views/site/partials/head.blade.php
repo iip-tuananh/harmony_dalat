@@ -27,14 +27,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="index.html" />
     <meta property="og:url" content="{{ url()->current() }}">
-
-
-{{--    <meta property="og:title" content="{{ $config->web_title }}">--}}
-{{--    <meta property="og:description" content="{{ $config->web_title }}">--}}
-    {{--    <meta property="og:image" content="{{@$config->image->path ?? ''}}">--}}
-{{--    <meta itemprop="description" content="{{ $config->web_title }}">--}}
-{{--    <meta itemprop="image" content="{{@$config->image->path ?? ''}}">--}}
-
     <meta property="og:title" content="@yield('title')">
     <meta property="og:description" content="@yield('description')">
     <meta property="og:image" content="@yield('image')">
@@ -43,6 +35,8 @@
     <meta itemprop="description" content="@yield('description')">
     <meta itemprop="image" content="@yield('image')">
     <meta itemprop="url" content="{{ url()->current() }}">
+
+
 
 
     <meta property="og:type" content="website" />
