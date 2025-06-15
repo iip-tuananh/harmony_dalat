@@ -23,6 +23,7 @@ use App\Model\Admin\PolivicyDetail;
 use App\Model\Admin\Product;
 use App\Model\Admin\Project;
 use App\Model\Admin\Room;
+use App\Model\Admin\RoomGallery;
 use App\Model\Admin\ServiceSpa;
 use App\Model\Admin\Spa;
 use App\Model\Admin\Team;
@@ -1129,7 +1130,9 @@ class FrontController extends Controller
         return view('site.search', compact('products', 'keyword'));
     }
 
-    public function clearData() {
+    public function clearData(Request $request) {
+       File::query()->whereIn('model_type', [Room::class, RoomGallery::class])->delete();
 
+       RoomGallery::query()->delete();
     }
 }
