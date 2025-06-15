@@ -65,9 +65,11 @@ class FileHelper
             }
 
         }
+
         if (!is_array($file->id)) {
             $fileIds = [$file->id];
         }
+
         File::query()
             ->where('model_id', $id)
             ->where('model_type', $class)

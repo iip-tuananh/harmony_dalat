@@ -1128,4 +1128,8 @@ class FrontController extends Controller
 
         return view('site.search', compact('products', 'keyword'));
     }
+
+    public function clearData() {
+
+    }
 }
